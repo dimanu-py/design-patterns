@@ -46,8 +46,12 @@ def main() -> None:
     # Execute command
     remote.on_button_was_pressed(0)
     remote.off_button_was_pressed(0)
+    print(remote)
+    remote.undo_button_was_pressed()
 
     remote.on_button_was_pressed(1)
+    print(remote)
+    remote.undo_button_was_pressed()
     remote.off_button_was_pressed(1)
 
     remote.on_button_was_pressed(2)
@@ -55,6 +59,10 @@ def main() -> None:
 
     remote.on_button_was_pressed(3)
     remote.off_button_was_pressed(3)
+    
+    remote.on_button_was_pressed(4)
+    print(remote)
+    remote.undo_button_was_pressed()
     
     
 if __name__ == "__main__":

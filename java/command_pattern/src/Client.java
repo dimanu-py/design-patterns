@@ -48,11 +48,19 @@ public class Client {
         System.out.println(remoteControl);
         
         remoteControl.onButtonWasPressed(0);
+        remoteControl.undoButtonWasPressed();
+
+        System.out.println(remoteControl);
+
         remoteControl.offButtonWasPressed(0);
         remoteControl.onButtonWasPressed(1);
         remoteControl.offButtonWasPressed(1);
         remoteControl.onButtonWasPressed(2);
         remoteControl.offButtonWasPressed(2);
+        remoteControl.undoButtonWasPressed();
+
+        System.out.println(remoteControl);
+        
         remoteControl.onButtonWasPressed(3);
     }
 }
