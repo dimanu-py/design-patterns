@@ -12,13 +12,20 @@ class Command(ABC):
 
     @abstractmethod
     def execute(self):
-        """Method to execute the command. This is what the invoker will call."""    
+        """Method to execute the command. This is what the invoker will call."""
+        
+    @abstractmethod
+    def undo(self):
+        """Method to undo the command. This will execute the opposite action that the execute method does."""
 
 
 class NoCommand(Command):
     """This is a null object that will help us to avoid checking for null references."""
     
     def execute(self) -> None:
+        return
+    
+    def undo(self) -> None:
         return
 
 
@@ -30,6 +37,9 @@ class LightOnCommand(Command):
 
     def execute(self) -> None:
         self.light.turn_on()
+        
+    def undo(self) -> None:
+        return self.light.turn_off()
     
 
 class LightOffCommand(Command):
@@ -40,6 +50,9 @@ class LightOffCommand(Command):
 
     def execute(self) -> None:
         self.light.turn_off()
+        
+    def undo(self) -> None:
+        return self.light.turn_on()
 
 
 class StereoOnWithCDCommand(Command):
@@ -52,6 +65,11 @@ class StereoOnWithCDCommand(Command):
         self.stereo.on()
         self.stereo.set_cd()
         self.stereo.set_volume(11)
+    
+    def undo(self) -> None:
+        self.stereo.off()
+        self.stereo.set_cd()
+        self.set_volume(0)
 
 
 class StereoOnWithDVDCommand(Command):
@@ -64,6 +82,11 @@ class StereoOnWithDVDCommand(Command):
         self.stereo.on()
         self.stereo.set_dvd()
         self.stereo.set_volume(11)
+        
+    def undo(self) -> None:
+        self.stereo.off()
+        self.stereo.set_dvd()
+        self.set_volume(0)
 
 
 class StereoOffWithCDCommand(Command):
@@ -76,6 +99,11 @@ class StereoOffWithCDCommand(Command):
         self.stereo.off()
         self.stereo.set_cd()
         self.stereo.set_volume(0)
+        
+    def undo(self) -> None:
+        self.stereo.on()
+        self.stereo.set_cd()
+        self.stereo.set_volume(11)
 
 
 class StereoOffWithDVDCommand(Command):
@@ -88,6 +116,11 @@ class StereoOffWithDVDCommand(Command):
         self.stereo.off()
         self.stereo.set_dvd()
         self.stereo.set_volume(0)
+    
+    def undo(self) -> None:
+        self.stereo.on()
+        self.stereo.set_dvd()
+        self.stereo.set_volume(11)
 
 
 class GarageDoorOpenCommand(Command):
@@ -99,6 +132,10 @@ class GarageDoorOpenCommand(Command):
     def execute(self) -> None:
         self.garage_door.open()
         self.garage_door.light_on()
+    
+    def undo(self) -> None:
+        self.garage_door.close()
+        self.garage_door.light_off()
 
 
 class GarageDoorCloseCommand(Command):
@@ -110,6 +147,10 @@ class GarageDoorCloseCommand(Command):
     def execute(self) -> None:
         self.garage_door.close()
         self.garage_door.light_off()
+    
+    def undo(self) -> None:
+        self.garage_door.open()
+        self.garage_door.light_on()
 
 
 class CeilingFanHighCommand(Command):
@@ -117,9 +158,23 @@ class CeilingFanHighCommand(Command):
 
     def __init__(self, ceiling_fan: CeilingFan) -> None:
         self.ceiling_fan = ceiling_fan
+        self.previous_speed = 0
 
     def execute(self) -> None:
+        self.previous_speed = self.ceiling_fan.speed
         self.ceiling_fan.high()
+        
+    def undo(self) -> None:
+        if self.previous_speed == 0:
+            self.ceiling_fan.off()
+        elif self.previous_speed == 1:
+            self.ceiling_fan.low()
+        elif self.previous_speed == 2:
+            self.ceiling_fan.medium()
+        elif self.previous_speed == 3:
+            self.ceiling_fan.high()
+        else:
+            raise ValueError("Invalid speed value")
         
 
 class CeilingFanMediumCommand(Command):
@@ -127,9 +182,24 @@ class CeilingFanMediumCommand(Command):
 
     def __init__(self, ceiling_fan: CeilingFan) -> None:
         self.ceiling_fan = ceiling_fan
+        self.previous_speed = 0
 
     def execute(self) -> None:
+        self.previous_speed = self.ceiling_fan.speed
         self.ceiling_fan.medium()
+    
+    def undo(self) -> None:
+        if self.previous_speed == 0:
+            self.ceiling_fan.off()
+        elif self.previous_speed == 1:
+            self.ceiling_fan.low()
+        elif self.previous_speed == 2:
+            self.ceiling_fan.medium()
+        elif self.previous_speed == 3:
+            self.ceiling_fan.high()
+        else:
+            raise ValueError("Invalid speed value")
+    
         
 
 class CeilingFanLowCommand(Command):
@@ -137,6 +207,20 @@ class CeilingFanLowCommand(Command):
 
     def __init__(self, ceiling_fan: CeilingFan) -> None:
         self.ceiling_fan = ceiling_fan
+        self.previous_speed = 0
 
     def execute(self) -> None:
+        self.previous_speed = self.ceiling_fan.speed
         self.ceiling_fan.low()
+        
+    def undo(self) -> None:
+        if self.previous_speed == 0:
+            self.ceiling_fan.off()
+        elif self.previous_speed == 1:
+            self.ceiling_fan.low()
+        elif self.previous_speed == 2:
+            self.ceiling_fan.medium()
+        elif self.previous_speed == 3:
+            self.ceiling_fan.high()
+        else:
+            raise ValueError("Invalid speed value")

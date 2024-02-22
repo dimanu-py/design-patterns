@@ -14,4 +14,9 @@ public class StereoOffWithDVDCommand implements Command {
         stereo.off();
     }
 
+    public void undo(){
+        stereo.on();
+        stereo.setDVD();
+        stereo.setVolume(11);
+    }
 }
