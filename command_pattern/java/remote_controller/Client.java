@@ -7,6 +7,7 @@ import command.LightOffCommand;
 import command.LightOnCommand;
 import command.StereoOffWithDVDCommand;
 import command.StereoOnWithCDCommand;
+import command.MacroCommand;
 import invoker.RemoteControl;
 import receiver.CeilingFan;
 import receiver.GarageDoor;
@@ -39,11 +40,17 @@ public class Client {
         
         StereoOnWithCDCommand stereoOnWithCD = new StereoOnWithCDCommand(stereo);
         StereoOffWithDVDCommand stereoOffWithDVD = new StereoOffWithDVDCommand(stereo);
+
+        Command[] partyOn = {livingRoomLightOn, ceilingFanHigh, stereoOnWithCD};
+        Command[] partyOff = {livingRoomLightOff, ceilingFanLow, stereoOffWithDVD};
+        MacroCommand partyOnMacro = new MacroCommand(partyOn);
+        MacroCommand partyOffMacro = new MacroCommand(partyOff);
         
         remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
         remoteControl.setCommand(1, kitchenLightOn, kitchenLightOff);
         remoteControl.setCommand(2, garageDoorUp, garageDoorDown);
         remoteControl.setCommand(3, stereoOnWithCD, stereoOffWithDVD);
+        remoteControl.setCommand(4, partyOnMacro, partyOffMacro);
         
         System.out.println(remoteControl);
         
@@ -62,5 +69,10 @@ public class Client {
         System.out.println(remoteControl);
         
         remoteControl.onButtonWasPressed(3);
+
+        System.out.println("\n--- Pushing Macro On ---\n");
+        remoteControl.onButtonWasPressed(4);
+        System.out.println("\n--- Pushing Macro Off ---\n");
+        remoteControl.offButtonWasPressed(4);
     }
 }

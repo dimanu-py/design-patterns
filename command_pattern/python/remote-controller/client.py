@@ -1,7 +1,7 @@
 from command import (CeilingFanHighCommand, CeilingFanLowCommand,
                      CeilingFanMediumCommand, GarageDoorCloseCommand,
                      GarageDoorOpenCommand, LightOffCommand, LightOnCommand,
-                     StereoOnWithCDCommand, StereoOnWithDVDCommand)
+                     StereoOnWithCDCommand, StereoOnWithDVDCommand, MacroCommand)
 from invoker import RemoteControl
 from receiver import CeilingFan, GarageDoor, Light, Stereo
 
@@ -34,12 +34,18 @@ def main() -> None:
     ceiling_fan_medium = CeilingFanMediumCommand(ceiling_fan)
     ceiling_fan_low = CeilingFanLowCommand(ceiling_fan)
 
+    party_on_commands = [living_room_light_on, stereo_on_with_cd, ceiling_fan_high]
+    party_off_commands = [living_room_light_off, stereo_on_with_dvd, ceiling_fan_low]
+    party_on_macro = MacroCommand(party_on_commands)
+    party_off_macro = MacroCommand(party_off_commands)
+
     # Add command to invoker
     remote.set_command(0, living_room_light_on, living_room_light_off)
     remote.set_command(1, garage_door_open, garage_door_close)
     remote.set_command(2, stereo_on_with_cd, stereo_on_with_dvd)
     remote.set_command(3, outdoor_light_on, outdoor_light_off)
     remote.set_command(4, ceiling_fan_high, ceiling_fan_low)
+    remote.set_command(5, party_on_macro, party_off_macro)
 
     print(remote)
 
@@ -63,6 +69,10 @@ def main() -> None:
     remote.on_button_was_pressed(4)
     print(remote)
     remote.undo_button_was_pressed()
+
+    remote.on_button_was_pressed(5)
+    print(remote)
+    remote.off_button_was_pressed(5)
     
     
 if __name__ == "__main__":
