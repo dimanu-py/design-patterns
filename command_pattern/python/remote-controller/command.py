@@ -234,3 +234,7 @@ class MacroCommand(Command):
     def execute(self) -> None:
         for command in self.commands:
             command.execute()
+
+    def undo(self) -> None:
+        for command in self.commands:
+            command.undo()
