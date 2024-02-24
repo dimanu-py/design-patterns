@@ -15,7 +15,7 @@ The project will have one folder per design pattern. Each folder will contain th
 
 ## Patterns covered
 
-1. Command Pattern
+1. [Command Pattern](https://github.com/dimanu-py/design-patterns/tree/main/command_pattern)
 
 ## Resources
 
