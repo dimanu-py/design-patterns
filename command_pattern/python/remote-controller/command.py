@@ -224,3 +224,13 @@ class CeilingFanLowCommand(Command):
             self.ceiling_fan.high()
         else:
             raise ValueError("Invalid speed value")
+
+
+class MacroCommand(Command):
+
+    def __init__(self, commands: list[Command]) -> None:
+        self.commands = commands
+
+    def execute(self) -> None:
+        for command in self.commands:
+            command.execute()
