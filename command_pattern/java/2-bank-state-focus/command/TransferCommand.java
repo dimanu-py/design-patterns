@@ -2,7 +2,7 @@ package command;
 
 import receiver.Account;
 
-public class TransferCommand implements Command {
+public class TransferCommand implements Transaction {
 
     private Account fromAccount;
     private Account toAccount;
