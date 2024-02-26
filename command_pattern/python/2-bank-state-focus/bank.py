@@ -23,18 +23,33 @@ class Bank:
 
 
 if __name__ == '__main__':
+    from bank_controller import BankController
+    from transaction import DepositCommand, WithDrawCommand, TransferCommand
 
     bank = Bank()
+    controller = BankController()
 
     account_one = bank.create_account('Apple')
     account_two = bank.create_account('Tesla')
     account_three = bank.create_account('Microsoft')
 
-    account_one.deposit(1000)
-    account_two.deposit(2000)
-    account_three.deposit(3000)
-
-    account_one.withdraw(500)
-    account_two.withdraw(1000)
+    controller.execute(DepositCommand(account_one, 1000))
+    controller.execute(DepositCommand(account_two, 2000))
+    controller.execute(DepositCommand(account_three, 3000))
 
     print(bank)
+
+    controller.undo()
+
+    print(bank)
+
+    controller.execute(WithDrawCommand(account_one, 500))
+    controller.redo()
+
+    print(bank)
+
+    controller.execute(TransferCommand(account_one, account_two, 500))
+
+    print(bank)
+
+    controller.undo()

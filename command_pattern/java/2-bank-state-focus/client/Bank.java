@@ -13,10 +13,11 @@ public class Bank {
         this.accounts = new HashMap<>();
     }
 
-    public void createAccount(String name) {
+    public Account createAccount(String name) {
         String number = generateRandomNumber();
         Account account = new Account(name, number);
         accounts.put(number, account);
+        return account;
     }
 
     public Account getAccount(String number) {
