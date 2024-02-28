@@ -4,6 +4,7 @@ import state_pattern.java.state.HasQuarterState;
 import state_pattern.java.state.NoQuarterState;
 import state_pattern.java.state.SoldOutState;
 import state_pattern.java.state.SoldState;
+import state_pattern.java.state.WinnerState;
 import state_pattern.java.state.State;
 
 public class GumballMachine {
@@ -12,6 +13,7 @@ public class GumballMachine {
     State noQuarterState;
     State hasQuarterState;
     State soldState;
+    State winnerState;
 
     State state = soldOutState;
     int numberGumballs = 0;
@@ -22,6 +24,7 @@ public class GumballMachine {
         noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
         soldState = new SoldState(this);
+        winnerState = new WinnerState(this);
         
         this.numberGumballs = numberGumballs;
 
@@ -71,6 +74,10 @@ public class GumballMachine {
 
     public State getSoldState() {
         return soldState;
+    }
+
+    public State getWinnerState() {
+        return winnerState;
     }
 
     public int getNumberGumballs() {

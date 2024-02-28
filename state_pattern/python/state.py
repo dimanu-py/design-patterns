@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import random
 
 from gumball_machine import GumballMachine
 
@@ -86,7 +87,35 @@ class HasQuarterState(State):
         
     def turn_crank(self) -> None:
         print("You turned...")
-        self.gumball_machine.set_state(self.gumball_machine.sold_state)
+        winner = random.randint(0, 9)
+        
+        if winner == 0 and self.gumball_machine.number_gumballs > 1:
+            self.gumball_machine.set_state(self.gumball_machine.winner_state)
+        else:
+            self.gumball_machine.set_state(self.gumball_machine.sold_state)
         
     def dispense(self) -> None:
         print("No gumball dispensed")
+        
+
+class WinnerState(State):
+    
+    def insert_quarter(self) -> None:
+        print("Please wait, we're already giving you a gumball")
+        
+    def eject_quarter(self) -> None:
+        print("Sorry, you already turned the crank")
+        
+    def turn_crank(self) -> None:
+        print("Turning twice doesn't get you another gumball!")
+        
+    def dispense(self) -> None:
+        print("YOU ARE A WINNER! You get two gumballs for your quarter")
+        self.gumball_machine.release_ball()
+        
+        if self.gumball_machine.number_gumballs == 0:
+            print("Oops, out of gumballs!")
+            self.gumball_machine.set_state(self.gumball_machine.sold_out_state)
+        else:
+            self.gumball_machine.set_state(self.gumball_machine.no_quarter_state)
+        

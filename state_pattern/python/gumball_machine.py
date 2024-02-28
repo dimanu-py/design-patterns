@@ -1,4 +1,4 @@
-from state import State, SoldOutState, HasQuarterState, SoldState, NoQuarterState
+from state import State, SoldOutState, HasQuarterState, SoldState, NoQuarterState, WinnerState
 
 
 class GumballMachine:
@@ -7,6 +7,7 @@ class GumballMachine:
     no_quarter_state: State
     has_quarter_state: State
     sold_state: State
+    winner_state: State
     
     def __init__(self, number_gumballs: int) -> None:
         
@@ -14,6 +15,7 @@ class GumballMachine:
         self.no_quarter_state = NoQuarterState(self)
         self.has_quarter_state = HasQuarterState(self)
         self.sold_state = SoldState(self)
+        self.winner_state = WinnerState(self)
         
         self.state = self.sold_out_state
         self.number_gumballs = number_gumballs
