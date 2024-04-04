@@ -23,6 +23,12 @@ class Duck(ABC):
     def fly(self) -> None:
         self.fly_behavior.fly()
 
+    def set_fly_behavior(self, behavior: FlyBehavior) -> None:
+        self.fly_behavior = behavior
+
+    def set_quack_behavior(self, behavior: QuackBehavior) -> None:
+        self.quack_behavior = behavior
+
 
 class MallardDuck(Duck):
 
