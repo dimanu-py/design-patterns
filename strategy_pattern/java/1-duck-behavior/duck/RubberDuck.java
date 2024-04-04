@@ -1,10 +1,11 @@
 package duck;
 
 
-public class RubberDuck extends Duck implements Quackable {
+public class RubberDuck extends Duck {
 
-    public void quack() {
-        System.out.println("Squeak");
+    public RubberDuck() {
+        quackBehavior = new Squeak();
+        flyBehavior = new FlyNoWay();
     }
 
     public void display() {

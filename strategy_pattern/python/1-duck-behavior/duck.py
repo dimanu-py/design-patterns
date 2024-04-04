@@ -1,24 +1,17 @@
 from abc import abstractmethod, ABC
 
-
-class Flyable(ABC):
-
-    @abstractmethod
-    def fly(self) -> None:
-        pass
+from fly import FlyBehavior, FlyWithWings, FlyNoWay
+from quack import QuackBehavior, Quack, Squeak, MuteQuack
 
 
-class Quackable(ABC):
+class Duck(ABC):
 
-    @abstractmethod
-    def quack(self) -> None:
-        pass
-
-
-class Duck:
+    def __init__(self) -> None:
+        self.fly_behavior = FlyBehavior()
+        self.quack_behavior = QuackBehavior()
 
     def quack(self) -> None:
-        print("Quack")
+        self.quack_behavior.quack()
 
     def swim(self) -> None:
         print("Swim")
@@ -28,43 +21,44 @@ class Duck:
         pass
 
     def fly(self) -> None:
-        print("I'm flying")
+        self.fly_behavior.fly()
 
 
-class MallardDuck(Duck, Flyable, Quackable):
+class MallardDuck(Duck):
+
+    def __init__(self) -> None:
+        self.fly_behavior = FlyWithWings()
+        self.quack_behavior = Quack()
 
     def display(self) -> None:
         print("I'm a Mallard Duck")
 
-    def fly(self) -> None:
-        print("I'm flying")
 
-    def quack(self) -> None:
-        print("Quack")
+class RedheadDuck(Duck):
 
-
-class RedheadDuck(Duck, Flyable, Quackable):
+    def __init__(self) -> None:
+        self.fly_behavior = FlyWithWings()
+        self.quack_behavior = Quack()
 
     def display(self) -> None:
         print("I'm a Redhead Duck")
 
-    def fly(self) -> None:
-        print("I'm flying")
 
-    def quack(self) -> None:
-        print("Quack")
+class RubberDuck(Duck):
 
-
-class RubberDuck(Duck, Quackable):
-
-    def quack(self) -> None:
-        print("Squeak")
+    def __init__(self) -> None:
+        self.fly_behavior = FlyNoWay()
+        self.quack_behavior = Squeak()
 
     def display(self) -> None:
         print("I'm a Rubber Duck")
 
 
 class DecoyDuck(Duck):
+
+    def __init__(self) -> None:
+        self.fly_behavior = FlyNoWay()
+        self.quack_behavior = MuteQuack()
 
     def display(self) -> None:
         print("I'm a Decoy Duck")

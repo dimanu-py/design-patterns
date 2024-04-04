@@ -1,10 +1,15 @@
 package duck;
 
 
-public class Duck {
+public abstract class Duck {
+
+    FlyBehavior flyBehavior;
+    QuackBehavior quackBehavior;
+
+    public Duck() {}
 
     public void quack() {
-        System.out.println("Quack");
+        quackBehavior.quack();
     }
 
     public void swim() {
@@ -14,7 +19,7 @@ public class Duck {
     public abstract void display();
 
     public void fly() {
-        System.out.println("I'm flying");
+        flyBehavior.fly();
     }
 
 }
