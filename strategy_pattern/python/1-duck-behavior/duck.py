@@ -24,3 +24,12 @@ class RedheadDuck(Duck):
 
     def display(self) -> None:
         print("I'm a Redhead Duck")
+
+
+class RubberDuck(Duck):
+
+    def quack(self) -> None:
+        print("Squeak")
+
+    def display(self) -> None:
+        print("I'm a Rubber Duck")
