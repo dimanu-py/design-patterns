@@ -13,6 +13,9 @@ class Duck:
     def display(self) -> None:
         pass
 
+    def fly(self) -> None:
+        print("I'm flying")
+
 
 class MallardDuck(Duck):
 
