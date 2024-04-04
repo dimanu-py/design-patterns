@@ -1,4 +1,18 @@
-from abc import abstractmethod
+from abc import abstractmethod, ABC
+
+
+class Flyable(ABC):
+
+    @abstractmethod
+    def fly(self) -> None:
+        pass
+
+
+class Quackable(ABC):
+
+    @abstractmethod
+    def quack(self) -> None:
+        pass
 
 
 class Duck:
@@ -17,19 +31,31 @@ class Duck:
         print("I'm flying")
 
 
-class MallardDuck(Duck):
+class MallardDuck(Duck, Flyable, Quackable):
 
     def display(self) -> None:
         print("I'm a Mallard Duck")
 
+    def fly(self) -> None:
+        print("I'm flying")
 
-class RedheadDuck(Duck):
+    def quack(self) -> None:
+        print("Quack")
+
+
+class RedheadDuck(Duck, Flyable, Quackable):
 
     def display(self) -> None:
         print("I'm a Redhead Duck")
 
+    def fly(self) -> None:
+        print("I'm flying")
 
-class RubberDuck(Duck):
+    def quack(self) -> None:
+        print("Quack")
+
+
+class RubberDuck(Duck, Quackable):
 
     def quack(self) -> None:
         print("Squeak")
@@ -37,17 +63,8 @@ class RubberDuck(Duck):
     def display(self) -> None:
         print("I'm a Rubber Duck")
 
-    def fly(self) -> None:
-        print("I can't fly")
-
 
 class DecoyDuck(Duck):
 
     def display(self) -> None:
         print("I'm a Decoy Duck")
-
-    def fly(self) -> None:
-        print("I can't fly")
-
-    def quack(self) -> None:
-        print("Silence")

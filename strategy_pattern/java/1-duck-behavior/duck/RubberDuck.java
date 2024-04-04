@@ -1,7 +1,7 @@
 package duck;
 
 
-public class RubberDuck extends Duck {
+public class RubberDuck extends Duck implements Quackable {
 
     public void quack() {
         System.out.println("Squeak");
@@ -9,10 +9,6 @@ public class RubberDuck extends Duck {
 
     public void display() {
         System.out.println("Rubber duck");
-    }
-
-    public void fly() {
-        System.out.println("I can't fly");
     }
 
 }
