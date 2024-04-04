@@ -1,14 +1,13 @@
 package duck;
 
-
-public class RubberDuck extends Duck {
+public class DecoyDuck extends Duck {
 
     public void quack() {
-        System.out.println("Squeak");
+        System.out.println("Silence");
     }
 
     public void display() {
-        System.out.println("Rubber duck");
+        System.out.println("I'm a Decoy duck");
     }
 
     public void fly() {

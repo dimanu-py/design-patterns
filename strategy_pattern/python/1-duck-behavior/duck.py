@@ -36,3 +36,18 @@ class RubberDuck(Duck):
 
     def display(self) -> None:
         print("I'm a Rubber Duck")
+
+    def fly(self) -> None:
+        print("I can't fly")
+
+
+class DecoyDuck(Duck):
+
+    def display(self) -> None:
+        print("I'm a Decoy Duck")
+
+    def fly(self) -> None:
+        print("I can't fly")
+
+    def quack(self) -> None:
+        print("Silence")
