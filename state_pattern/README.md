@@ -9,7 +9,7 @@ By moving this behavior and state transition from our main class to different cl
 
 ## Class diagram & Collaborators
 
-![image](https://github.com/dimanu-py/design-patterns/assets/61460617/3f374ca9-6b7d-4a62-9c75-131043085543)
+![State Pattern class diagram](/assets/images/state_pattern_class_diagram.png "Extracted from Head First Design Patterns book")
 
 In the image we can see the Command Pattern is composed of two main components:
 1. **Context**: the object whose state is changing. It has the methods to perform the state transitions but delegates this behavior to other classes.
@@ -37,6 +37,6 @@ I've implemented two versions: one for [Python](https://github.com/dimanu-py/des
 To see in more detail the structure and the collaborators' implementation in each language, you can go through the files or browse the commits from the following links:
 
 - [Initial context code](https://github.com/dimanu-py/design-patterns/commit/9c1d258a49cf02bc2f1bc57e7b2862e5c8aded5b): typical code we could find ourselves working with where adding new features gets messy.
-- [State interface](https://github.com/dimanu-py/design-patterns/commit/36a2256a3d31e205c5a0f67e0fdb991673047da8) and [Concrete States](https://github.com/dimanu-py/design-patterns/commit/36a2256a3d31e205c5a0f67e0fdb991673047da8)
-- [Context refactor](https://github.com/dimanu-py/design-patterns/commit/36a2256a3d31e205c5a0f67e0fdb991673047da8)
+- [State interface](https://github.com/dimanu-py/design-patterns/commit/36a2256a3d31e205c5a0f67e0fdb991673047da8) and [Concrete States](https://github.com/dimanu-py/design-patterns/commit/27aa904ad37b5b9bb267279b48efcbed96bcd204)
+- [Context refactor to use states](https://github.com/dimanu-py/design-patterns/commit/53560233dea9e6026243c6328d6027e9475df13c)
 - [Introducing a new feature](https://github.com/dimanu-py/design-patterns/commit/637d78dd2c56a36307507a06dd275d0d2f9ab84c)

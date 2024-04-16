@@ -7,7 +7,7 @@ With this encapsulation, we make each class responsible for its actions, followi
 
 ## Class diagram & Collaborators
 
-<img width="950" alt="image" src="https://github.com/dimanu-py/design-patterns/assets/61460617/303b7bdd-9761-4f4a-9263-bac6596224f9">
+![Command Pattern class diagram](/assets/images/state_pattern_class_diagram.png "Extracted from Head First Design Patterns book")
 
 In the image we can see the Command Pattern is composed of three main collaborators:
 
@@ -39,13 +39,13 @@ so we can execute them directly only by calling our _Meta Command_.
 The first example I've uploaded is the _Remote Controller_. This is because it was an example where I could understand and visualize easily this pattern. Feel free
 to visit any other example you find more useful.
 
-For the _Remote Controller_ example I've made two versions, one for [Python](https://github.com/dimanu-py/design-patterns/tree/main/command_pattern/python/remote-controller) and the other
-for [Java](https://github.com/dimanu-py/design-patterns/tree/main/command_pattern/java/remote_controller)
+For the _Remote Controller_ example I've made two versions, one for [Python](https://github.com/dimanu-py/design-patterns/tree/main/command_pattern/python/1-remote-controller) and the other
+for [Java](https://github.com/dimanu-py/design-patterns/tree/main/command_pattern/java/1-remote-controller)
 
 To see in more detail how all the collaborators are implemented in each language you can go through the files or browse the commits directly from the following links:
 
 - [Receiver explanation](https://github.com/dimanu-py/design-patterns/commit/c58273449ce83c87d40e52681f2edc712d9b50f9)
-- [Command explanation](https://github.com/dimanu-py/design-patterns/commit/c58273449ce83c87d40e52681f2edc712d9b50f9)
+- [Command explanation](https://github.com/dimanu-py/design-patterns/commit/4f1455ccd580f4e21a57ed0ef0361443efe88ccb)
 - [Invoker explanation](https://github.com/dimanu-py/design-patterns/commit/14a831d0330eae4aae7efcf047e5783799f0561d)
 - [Undo operation for commands](https://github.com/dimanu-py/design-patterns/commit/de57831d6e8e6cc8c3a6941f3ef047710ce1675c)
 - [How invoker uses undo](https://github.com/dimanu-py/design-patterns/commit/6e21548813a867c7000b4668ae85ebd02da62248)
