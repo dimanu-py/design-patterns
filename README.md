@@ -9,7 +9,7 @@ This repository contains a collection of design patterns that I'll be learning. 
 
 The project will have one folder per design pattern. Each folder will contain the following files:
 
-* **README.md**: it should have an explanation of the design pattern, with the class diagram and key aspects of the design.
+* **README.md**: it should explain the design pattern, with the class diagram and key aspects of the design.
 * **python**: implementation of the design pattern in Python
 * **java**: implementation of the design pattern in Java
 
@@ -17,6 +17,7 @@ The project will have one folder per design pattern. Each folder will contain th
 
 1. [Command Pattern](https://github.com/dimanu-py/design-patterns/tree/main/command_pattern)
 2. [State Pattern](https://github.com/dimanu-py/design-patterns/tree/main/state_pattern)
+3. [Strategy Pattern](https://github.com/dimanu-py/design-patterns/tree/main/strategy_pattern)
 
 ## Resources
 
@@ -24,10 +25,8 @@ The project will have one folder per design pattern. Each folder will contain th
 ![Java](https://img.shields.io/github/stars/openjdk/jdk?label=Java&style=social)
 
 * Language: [Python](https://www.python.org/) & [Java](https://www.oracle.com/java/)
-
+* Main source: [Head First Design Patterns Book](https://www.amazon.es/First-Design-Patterns-Brain-Friendly/dp/0596007124)
 
 ### Visit my GitHub profile for more projects 🚀
 
 [![Web](https://img.shields.io/badge/GitHub-Dimanu.py-14a1f0?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://github.com/dimanu-py)
-
-
