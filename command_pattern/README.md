@@ -1,13 +1,16 @@
 # Command Pattern
 
+> [!IMPORTANT]
 > The Command Pattern is a behavioral pattern that allows us to encapsulate an action or a request inside a separate object.
 
-By extracting the request into a single object, we can decouple the object that is making the request, from the object that is capable of performing that request.
-With this encapsulation, we make each class responsible for its actions, following the Separation of Concerns principle.
+By extracting the request into a single object we achieve the following benefits:
+1. Decouple the object that is making the request, from the object that is capable of performing that request. We favor composition to manage collaboration between classes
+2. Make each class responsible for its actions, following the Separation of Concerns principle.
+3. We program to an interface rather to concrete implementations, favouring the use of polymorphism.
 
 ## Class diagram & Collaborators
 
-![Command Pattern class diagram](/assets/images/state_pattern_class_diagram.png "Extracted from Head First Design Patterns book")
+![Command Pattern class diagram](/assets/images/command_pattern_class_diagram.png "Extracted from Head First Design Patterns book")
 
 In the image we can see the Command Pattern is composed of three main collaborators:
 
@@ -33,6 +36,18 @@ One of the advantages of the Command Pattern is that allows us to implement an u
 
 If our client wants to execute a bunch of commands altogether we can create a _Meta Command_. This would be a new type of command that stores a group of commands,
 so we can execute them directly only by calling our _Meta Command_.
+
+## Command vs Strategy Pattern
+
+As we've seen in other states patterns, the Command pattern and Strategy have a very similar class diagram, making confusing when to use each.
+
+> [!IMPORTANT]
+> The difference between the patterns is in the intention and the behavior of the objects
+
+The Command pattern turns requests to do actions into objects, decoupling the object that invokes the operation from the one that knows how to perform it.
+
+The Strategy pattern is intended to choose different ways of performing an action within a single interface context. This pattern decouples 
+the implementation of the algorithm from the code that uses it.
 
 ## Code examples
 

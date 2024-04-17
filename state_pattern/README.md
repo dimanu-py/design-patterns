@@ -1,5 +1,6 @@
 # State Pattern
 
+> [!IMPORTANT]
 > The State Pattern is a behavioral pattern that allows us to change the behavior of an object when its internal state changes.
 
 By moving this behavior and state transition from our main class to different classes we achieve the following benefits:
@@ -11,7 +12,7 @@ By moving this behavior and state transition from our main class to different cl
 
 ![State Pattern class diagram](/assets/images/state_pattern_class_diagram.png "Extracted from Head First Design Patterns book")
 
-In the image we can see the Command Pattern is composed of two main components:
+In the image we can see the State Pattern is composed of two main components:
 1. **Context**: the object whose state is changing. It has the methods to perform the state transitions but delegates this behavior to other classes.
 2. **State**: defines what methods each concrete state will need to overwrite.
 
@@ -19,14 +20,17 @@ A simple example is thinking about any video game. The game can have different s
 
 The main idea is that the `Context` class delegates the work of acting and moving from one state to another while the client just uses a simple interface. The client doesn't need to know the internal state of our class.
 
-## Strategy and State Patterns related
+## Strategy vs State Patterns
 
-The Strategy and State patterns are said to be brothers. This is because its class diagrams and functionality are very similar. However, there are small details that make the difference between them:
+The Strategy and State patterns are said to be brothers. This is because its class diagrams and implementation are very similar. 
 
-| | Strategy | State |
-| ---- | ----- | ----- |
-| Use | An object can use different algorithms without affecting itself | An object can have different behaviors that are based on its internal state |
-| Client | Tends to specify what algorithm or strategy to follow | The client doesn't know anything about the internal state |
+> [!IMPORTANT]
+> The difference between the patterns is in the intention and the behavior of the objects
+
+The State pattern manages different behaviors that depend on the internal state of the object. What we are changing and encapsulating is the state of the object itself.
+
+On the other hand, the Strategy pattern provides different ways of doing an action. We encapsulate possible algorithms for doing that action, but we don't depend on the state of the object
+to select one way or another.
 
 ## Code examples
 
