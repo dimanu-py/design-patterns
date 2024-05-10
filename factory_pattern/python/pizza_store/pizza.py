@@ -53,14 +53,27 @@ class PepperoniPizza(Pizza):
         self.toppings.append("Grated parmesan cheese")
 
 
-class GreekPizza(Pizza):
+class VeggiePizza(Pizza):
 
     def __init__(self) -> None:
         super().__init__()
-        self.name = "Greek Pizza"
+        self.name = "Veggie Pizza"
+        self.dough = "Crust"
+        self.sauce = "Marinara Pizza Sauce"
+        self.toppings.append("Shredded Mozzarella")
+        self.toppings.append("Grated Parmesan")
+        self.toppings.append("Diced Onion")
+        self.toppings.append("Sliced Mushrooms")
+        self.toppings.append("Sliced Red Pepper")
+        self.toppings.append("Sliced Black Olives")
+
+
+class ClamPizza(Pizza):
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Clam Pizza"
         self.dough = "Thin Crust"
-        self.sauce = "Greek Sauce"
-        self.toppings.append("Feta Cheese")
-        self.toppings.append("Olives")
-        self.toppings.append("Spinach")
-        self.toppings.append("Onion")
+        self.sauce = "White Garlic Sauce"
+        self.toppings.append("Clams")
+        self.toppings.append("Grated Parmesan")
