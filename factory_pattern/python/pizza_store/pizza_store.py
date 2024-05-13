@@ -1,14 +1,16 @@
-from pizza import Pizza, CheesePizza, PepperoniPizza, VeggiePizza, ClamPizza
-from simple_pizza_factory import SimplePizzaFactory
+from abc import ABC, abstractmethod
+
+from pizza import Pizza
 
 
-class PizzaStore:
+class PizzaStore(ABC):
 
-    def __init__(self, factory: SimplePizzaFactory) -> None:
-        self.factory = factory
+    @abstractmethod
+    def create_pizza(self, pizza_type: str) -> Pizza:
+        pass
 
-    def order_pizza(self, pizza_type):
-        pizza: Pizza = self.factory.order_pizza(pizza_type)
+    def order_pizza(self, pizza_type: str) -> Pizza:
+        pizza: Pizza = self.order_pizza(pizza_type)
 
         pizza.prepare()
         pizza.bake()

@@ -1,14 +1,9 @@
 package pizza_store;
 
-import pizza_store.simple_pizza_factory.SimplePizzaFactory;
 
+public abstract class PizzaStore {
 
-public class PizzaStore {
-    SimplePizzaFactory factory;
-
-    public PizzaStore(SimplePizzaFactory factory) {
-        this.factory = factory;
-    }
+    abstract Pizza createPizza(String type);
 
     public Pizza orderPizza(String type) {
         Pizza pizza;
