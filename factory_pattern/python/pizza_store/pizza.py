@@ -77,3 +77,75 @@ class ClamPizza(Pizza):
         self.sauce = "White Garlic Sauce"
         self.toppings.append("Clams")
         self.toppings.append("Grated Parmesan")
+
+
+class ChicagoStyleVeggiePizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "Chicago Deep Dish Veggie Pizza"
+        self.dough = "Extra Thick Crust Dough"
+        self.sauce = "Plum Tomato Sauce"
+        self.toppings = ["Shredded Mozzarella Cheese", "Black Olives", "Spinach", "Eggplant"]
+
+
+class ChicagoStyleClamPizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "Chicago Style Clam Pizza"
+        self.dough = "Extra Thick Crust Dough"
+        self.sauce = "Plum Tomato Sauce"
+        self.toppings = ["Shredded Mozzarella Cheese", "Frozen Clams from Chesapeake Bay"]
+
+
+class ChicagoStylePepperoniPizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "Chicago Style Pepperoni Pizza"
+        self.dough = "Extra Thick Crust Dough"
+        self.sauce = "Plum Tomato Sauce"
+        self.toppings = ["Shredded Mozzarella Cheese", "Black Olives", "Spinach", "Eggplant", "Sliced Pepperoni"]
+
+
+class ChicagoStyleCheesePizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "Chicago Style Deep Dish Cheese Pizza"
+        self.dough = "Extra Thick Crust Dough"
+        self.sauce = "Plum Tomato Sauce"
+        self.toppings = ["Shredded Mozzarella Cheese"]
+
+
+class NewYorkStyleCheesePizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "NY Style Sauce and Cheese Pizza"
+        self.dough = "Thin Crust Dough"
+        self.sauce = "Marinara Sauce"
+        self.toppings = ["Grated Reggiano Cheese"]
+
+
+class NewYorkStyleClamPizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "NY Style Clam Pizza"
+        self.dough = "Thin Crust Dough"
+        self.sauce = "Marinara Sauce"
+        self.toppings = ["Grated Reggiano Cheese", "Fresh Clams from Long Island Sound"]
+
+
+class NewYorkStylePepperoniPizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "NY Style Pepperoni Pizza"
+        self.dough = "Thin Crust Dough"
+        self.sauce = "Marinara Sauce"
+        self.toppings = ["Grated Reggiano Cheese", "Sliced Pepperoni", "Garlic", "Onion", "Mushrooms", "Red Pepper"]
+
+
+class NewYorkStyleVeggiePizza(Pizza):
+    def __init__(self):
+        super().__init__()
+        self.name = "NY Style Veggie Pizza"
+        self.dough = "Thin Crust Dough"
+        self.sauce = "Marinara Sauce"
+        self.toppings = ["Grated Reggiano Cheese", "Garlic", "Onion", "Mushrooms", "Red Pepper"]
