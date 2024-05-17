@@ -1,32 +1,46 @@
+from abc import ABC, abstractmethod
+
+from ingredients.dough import Dough
+from ingredients.sauce import Sauce
+from ingredients.cheese import Cheese
+from ingredients.veggies import Veggies
+from ingredients.pepperoni import Pepperoni
+from ingredients.clams import Clams
 
 
-
-class Pizza:
+class Pizza(ABC):
 
     def __init__(self) -> None:
-        self.name = None
-        self.dough = None
-        self.sauce = None
-        self.toppings = []
+        self.name: str = None
+        self.dough: Dough = None
+        self.sauce: Sauce = None
+        self.cheese: Cheese = None
+        self.veggies: list[Veggies] = []
+        self.pepperoni: Pepperoni = None
+        self.clams: Clams = None
 
+    @abstractmethod
     def prepare(self) -> None:
-        print(f"Preparing {self.name}")
+        pass
 
     def bake(self) -> None:
-        print(f"Baking {self.name}")
+        print("Baking for 25 minutes at 350")
 
     def cut(self) -> None:
-        print(f"Cutting {self.name}")
+        print("Cutting the pizza into diagonal slices")
 
     def box(self) -> None:
-        print(f"Boxing {self.name}")
+        print("Place pizza in official PizzaStore box")
 
     def __str__(self) -> str:
         return f"""
             Name: {self.name}
             Dough: {self.dough}
             Sauce: {self.sauce}
-            Toppings: {self.toppings}
+            Veggies: {self.veggies}
+            Cheese: {self.cheese}
+            Pepperoni: {self.pepperoni}
+            Clams: {self.clams}
         """
 
 
