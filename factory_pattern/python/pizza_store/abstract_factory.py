@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 
 from ingredients import dough, sauce, cheese, veggies, pepperoni, clams
+from pizza import Pizza, CheesePizza, ClamPizza, PepperoniPizza, VeggiePizza
+from pizza_store import PizzaStore
 
 
 class PizzaIngredientFactory(ABC):
@@ -81,3 +83,52 @@ class ChicagoPizzaIngredientFactory(PizzaIngredientFactory):
 
     def create_clam(self) -> clams.Clams:
         return clams.FrozenClams()
+
+
+class NewYorkPizzaStore(PizzaStore):
+
+    def __init__(self, ingredient_factory: PizzaIngredientFactory) -> None:
+        self.ingredient_factory = ingredient_factory
+
+
+    def create_pizza(self, pizza_type: str) -> Pizza:
+        if pizza_type == "cheese":
+            pizza = CheesePizza(self.ingredient_factory)
+            pizza.name = "New York Style Cheese Pizza"
+        elif pizza_type == "clam":
+            pizza = ClamPizza(self.ingredient_factory)
+            pizza.name = "New York Style Clam Pizza"
+        elif pizza_type == "pepperoni":
+            pizza = PepperoniPizza(self.ingredient_factory)
+            pizza.name = "New York Style Pepperoni Pizza"
+        elif pizza_type == "veggie":
+            pizza = VeggiePizza(self.ingredient_factory)
+            pizza.name = "New York Style Veggie Pizza"
+        else:
+            raise ValueError(f"Invalid pizza type: {pizza_type}")
+
+        return pizza
+
+
+class ChicagoPizzaStore(PizzaStore):
+
+    def __init__(self, ingredient_factory: PizzaIngredientFactory) -> None:
+        self.ingredient_factory = ingredient_factory
+
+    def create_pizza(self, pizza_type: str) -> Pizza:
+        if pizza_type == "cheese":
+            pizza = CheesePizza(self.ingredient_factory)
+            pizza.name = "Chicago Style Cheese Pizza"
+        elif pizza_type == "clam":
+            pizza = ClamPizza(self.ingredient_factory)
+            pizza.name = "Chicago Style Clam Pizza"
+        elif pizza_type == "pepperoni":
+            pizza = PepperoniPizza(self.ingredient_factory)
+            pizza.name = "Chicago Style Pepperoni Pizza"
+        elif pizza_type == "veggie":
+            pizza = VeggiePizza(self.ingredient_factory)
+            pizza.name = "Chicago Style Veggie Pizza"
+        else:
+            raise ValueError(f"Invalid pizza type: {pizza_type}")
+
+        return pizza

@@ -7,6 +7,8 @@ from ingredients.veggies import Veggies
 from ingredients.pepperoni import Pepperoni
 from ingredients.clams import Clams
 
+from abstract_factory import PizzaIngredientFactory
+
 
 class Pizza(ABC):
 
@@ -46,51 +48,56 @@ class Pizza(ABC):
 
 class CheesePizza(Pizza):
 
-    def __init__(self) -> None:
+    def __init__(self, ingredients_factory: PizzaIngredientFactory) -> None:
         super().__init__()
-        self.name = "Cheese Pizza"
-        self.dough = "Regular Crust"
-        self.sauce = "Marinara Pizza Sauce"
-        self.toppings.append("Fresh Mozzarella")
-        self.toppings.append("Parmesan")
+        self.ingredients_factory = ingredients_factory
+
+    def prepare(self) -> None:
+        print(f"Preparing {self.name}")
+        self.dough = self.ingredients_factory.create_dough()
+        self.sauce = self.ingredients_factory.create_sauce()
+        self.cheese = self.ingredients_factory.create_cheese()
 
 
 class PepperoniPizza(Pizza):
 
-    def __init__(self) -> None:
+    def __init__(self, ingredients_factory: PizzaIngredientFactory) -> None:
         super().__init__()
-        self.name = "Pepperoni Pizza"
-        self.dough = "Crust"
-        self.sauce = "Marinara Pizza Sauce"
-        self.toppings.append("Sliced Pepperoni")
-        self.toppings.append("Sliced Onion")
-        self.toppings.append("Grated parmesan cheese")
+        self.ingredients_factory = ingredients_factory
+
+    def prepare(self) -> None:
+        print(f"Preparing {self.name}")
+        self.dough = self.ingredients_factory.create_dough()
+        self.sauce = self.ingredients_factory.create_sauce()
+        self.cheese = self.ingredients_factory.create_cheese()
+        self.pepperoni = self.ingredients_factory.create_pepperoni()
 
 
 class VeggiePizza(Pizza):
 
-    def __init__(self) -> None:
+    def __init__(self, ingredients_factory: PizzaIngredientFactory) -> None:
         super().__init__()
-        self.name = "Veggie Pizza"
-        self.dough = "Crust"
-        self.sauce = "Marinara Pizza Sauce"
-        self.toppings.append("Shredded Mozzarella")
-        self.toppings.append("Grated Parmesan")
-        self.toppings.append("Diced Onion")
-        self.toppings.append("Sliced Mushrooms")
-        self.toppings.append("Sliced Red Pepper")
-        self.toppings.append("Sliced Black Olives")
+        self.ingredients_factory = ingredients_factory
+
+    def prepare(self) -> None:
+        print(f"Preparing {self.name}")
+        self.dough = self.ingredients_factory.create_dough()
+        self.sauce = self.ingredients_factory.create_sauce()
+        self.veggies = self.ingredients_factory.create_veggies()
 
 
 class ClamPizza(Pizza):
 
-    def __init__(self) -> None:
+    def __init__(self, ingredients_factory: PizzaIngredientFactory) -> None:
         super().__init__()
-        self.name = "Clam Pizza"
-        self.dough = "Thin Crust"
-        self.sauce = "White Garlic Sauce"
-        self.toppings.append("Clams")
-        self.toppings.append("Grated Parmesan")
+        self.ingredients_factory = ingredients_factory
+
+    def prepare(self) -> None:
+        print(f"Preparing {self.name}")
+        self.dough = self.ingredients_factory.create_dough()
+        self.sauce = self.ingredients_factory.create_sauce()
+        self.cheese = self.ingredients_factory.create_cheese()
+        self.clams = self.ingredients_factory.create_clam()
 
 
 class ChicagoStyleVeggiePizza(Pizza):
